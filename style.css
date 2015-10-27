@@ -1,0 +1,85 @@
+.game-board {
+	width: 350px;
+	border: 5px solid black;
+}
+
+.square {
+	display: inline-block;
+	margin: auto;
+	width: 100px;
+	height: 100px;
+	border: 1px solid red;
+	vertical-align: top;
+}
+
+.square1-mark-X {
+	display: none;
+}
+
+.square1-mark-O {
+	display: none;	
+}
+
+.square2-mark-X {
+	display: none;
+}
+
+.square2-mark-O {
+	display: none;	
+}
+
+.square3-mark-X {
+	display: none;
+}
+
+.square3-mark-O {
+	display: none;	
+}
+
+.square4-mark-X {
+	display: none;
+}
+
+.square4-mark-O {
+	display: none;	
+}
+
+.square5-mark-X {
+display: none;
+}
+
+.square5-mark-O {
+	display: none;	
+}
+
+.square6-mark-X {
+	display: none;
+}
+
+.square6-mark-O {
+	display: none;	
+}
+
+.square7-mark-X {
+	display: none;
+}
+
+.square7-mark-O {
+	display: none;	
+}
+
+.square8-mark-X {
+	display: none;
+}
+
+.square8-mark-O {
+	display: none;	
+}
+
+.square9-mark-X {
+	display: none;
+}
+
+.square9-mark-O {
+	display: none;	
+}
