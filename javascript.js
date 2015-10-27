@@ -36,6 +36,7 @@ var mapOfBoard =
 var mapOfBoardReverse = ["zero",[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]];
 
 function theGameOrder(){
+	testIfWin();
 	var total = 0;
 
 	//This flattens the game-array into one array with all the current numbers.
@@ -111,6 +112,46 @@ function computerMakeMove(){
 	}
 }
 
+
+	// Test To see if someone has won
+
+function testIfWin(){
+
+	//The winning posibilites
+	var row1 = game[0][0] + game[0][1] + game[0][2];
+ 	var row2 = game[1][0] + game[1][1] + game[1][2];
+ 	var row3 = game[2][0] + game[2][1] + game[2][2];
+ 	var column1 = game[0][0] + game[1][0] + game[2][0];
+ 	var column2 = game[0][1] + game[1][1] + game[2][1];
+ 	var column3 = game[0][2] + game[1][2] + game[2][2];
+ 	var diag1 = game[0][2] + game[1][1] + game[2][0];
+ 	var diag2 = game[0][0] + game[1][1] + game[2][2];
+
+ 	if (row1 === -3 || row2 === -3 || row3 === -3 || column1 === -3 || column2 === -3 || column3 === -3 || diag1 === -3 || diag2 === -3 ){
+ 		$(".winner").text("Wow human just won");
+ 		//Todo: add reset-function here
+ 	}
+ 	else if (row1 === 3 || row2 === 3 || row3 === 3 || column1 === 3 || column2 === 3 || column3 === 3 || diag1 === 3 || diag2 === 3 ){
+		$(".winner").text("Wow the computer just won");	
+	}
+}
+//Rule 1 - make winning move if possibles
+function makeWinningMove(){
+	//The winning posibilites
+	var row1 = game[0][0] + game[0][1] + game[0][2];
+ 	var row2 = game[1][0] + game[1][1] + game[1][2];
+ 	var row3 = game[2][0] + game[2][1] + game[2][2];
+ 	var column1 = game[0][0] + game[1][0] + game[2][0];
+ 	var column2 = game[0][1] + game[1][1] + game[2][1];
+ 	var column3 = game[0][2] + game[1][2] + game[2][2];
+ 	var diag1 = game[0][2] + game[1][1] + game[2][0];
+ 	var diag2 = game[0][0] + game[1][1] + game[2][2];
+
+	if (row1 === 2){
+
+	}
+}
+
 theGameOrder();
 
 });
@@ -156,19 +197,7 @@ theGameOrder();
 
 
 
-	// Test To see if someone has won
- // function testIfWin(){
 
- // 	if (game[0][0] === 1  && game[1][0] === 1 && game[2][0] === 1){
- // 		console.log("Human has won");
- // 	}
- // 	else if (game[0][1] === 1  && game[1][1] === 1 && game[2][1] === 1){
- // 		console.log("Human has won");	
- // 	}
- // 	else {
- // 		console.log("Human has not won");
- // 	}
- // }
 
 
 	//Might be useful
