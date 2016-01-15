@@ -1,6 +1,16 @@
+h1 {
+	text-align: center;
+	font-size: 50px;
+}
+
+
 .game-board {
-	width: 350px;
-	border: 5px solid black;
+	width: 312px;
+	/*border: 5px solid black;*/
+	margin: 0 auto;
+	margin-top: 70px;
+	position: relative;
+	text-align: center;
 }
 
 .square {
@@ -8,78 +18,133 @@
 	margin: auto;
 	width: 100px;
 	height: 100px;
-	border: 1px solid red;
-	vertical-align: top;
+	border: 3px solid black;
+	
+	vertical-align: middle;
+	font-size: 70px;
+}
+
+.left{
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.center{
+	float: center;
+}
+
+.top-border{
+	border-top:none;
+}
+
+.right-border{
+	border-right:none;
+}
+
+.bottom-border{
+	border-bottom:none;
+}
+
+.left-border{
+	border-left:none;
+}
+
+
+p {
+	vertical-align: middle;
+	text-align: center;
+	margin: 0;
 }
 
 .square1-mark-X {
 	display: none;
+	vertical-align: middle;
 }
 
 .square1-mark-O {
 	display: none;	
+	vertical-align: middle;
 }
 
 .square2-mark-X {
 	display: none;
+	vertical-align: middle;
 }
 
 .square2-mark-O {
 	display: none;	
+	vertical-align: middle;
 }
 
 .square3-mark-X {
 	display: none;
+	vertical-align: middle;
 }
 
 .square3-mark-O {
 	display: none;	
+	vertical-align: middle;
 }
 
 .square4-mark-X {
 	display: none;
+	vertical-align: middle;
 }
 
 .square4-mark-O {
 	display: none;	
+	vertical-align: middle;
 }
 
 .square5-mark-X {
 display: none;
+vertical-align: middle;
 }
 
 .square5-mark-O {
 	display: none;	
+	vertical-align: middle;
 }
 
 .square6-mark-X {
 	display: none;
+	vertical-align: middle;
 }
 
 .square6-mark-O {
 	display: none;	
+	vertical-align: middle;
 }
 
 .square7-mark-X {
 	display: none;
+	vertical-align: middle;
 }
 
 .square7-mark-O {
 	display: none;	
+	vertical-align: middle;
 }
 
 .square8-mark-X {
 	display: none;
+	vertical-align: middle;
 }
 
 .square8-mark-O {
-	display: none;	
+	display: none;
+	vertical-align: middle;	
 }
 
 .square9-mark-X {
 	display: none;
+	vertical-align: middle;
 }
 
 .square9-mark-O {
 	display: none;	
+	vertical-align: middle;
 }
