@@ -1,8 +1,8 @@
 
 var score = {
-	"human": 0,
-	"computer": 0,
-	"draw" : 0
+	human: 0,
+	computer: 0,
+	draw: 0
 }
 
 
@@ -29,8 +29,6 @@ var humanTurn = 0;
 var turn = 0
 var total = 0;
 
-
-
 function theGameOrder(){
 	console.log(turn)
 	testIfWin();
@@ -49,18 +47,11 @@ function theGameOrder(){
 		return a.concat(b);
 	}, []);
 
-	
 	//This sums the numbers in the flattened array
 	$.each(flattened, function() {
 	    total += this;
 	});
-
-	//If the total sum of the numbers in the game is a odd number it is the human's turn. 
-	//Otherwise it is the computers turn
-	// console.log(humanturn);
-
-
-
+	// if the turn is odd is a human turn, if is even it is the computer turn
 	if (turn === 0) {
 		computerFirstMove();
 		//Here we restart this function, to be able to give the computer its turn
@@ -114,10 +105,10 @@ function computerFirstMove(){
 	var move2 = firstMoves[random][1];
 	if (game[move1][move2] === 0){
 		game[move1][move2] = 10;
-		
+
 		//It assings squareNr the square-number of the random move. It does this by checking the map, that is found in the beginning of the program.
 		var squareNr = mapOfBoard[move1][move2];
-		
+
 		//It changes the CSS of the specified square that was randomly chosen.
 		$(".square" + squareNr + "-mark-X").css("display", "inline-block");
 		turn++;
@@ -126,8 +117,6 @@ function computerFirstMove(){
 }
 
 function computerMakeMove(){
-
-
 	var row1 = game[0][0] + game[0][1] + game[0][2];
 	var row2 = game[1][0] + game[1][1] + game[1][2];
 	var row3 = game[2][0] + game[2][1] + game[2][2];
@@ -151,13 +140,35 @@ function computerMakeMove(){
 		return; 
  	}
 
+	var bestMoves = [[0,0],[0,2],[1,1],[2,0],[2,2]]
+	var moves = [game[0][0],game[0][2],game[1][1],game[2][0],game[2][2]];
+	var random = Math.floor(Math.random() * 5)
+	var move1 = bestMoves[random][0];
+	var move2 = bestMoves[random][1];
+	var total = moves.reduce(function(prev, curr){
+		return prev + curr;
+	});
+
 	//This creates two random numbers.
 	var randomMove1 = Math.floor(Math.random() * 3);
 	var randomMove2 = Math.floor(Math.random() * 3);
-	
-	//If the position on the game-board is equal to zero, it means that neither human nor computer
-	//has used the square, and is therefore open for use.
-	if (game[randomMove1][randomMove2] === 0){
+
+
+
+
+	if (game[move1][move2] === 0){
+		game[move1][move2] = 10;
+		
+		//It assings squareNr the square-number of the random move. It does this by checking the map, that is found in the beginning of the program.
+		var squareNr = mapOfBoard[move1][move2];
+		
+		//It changes the CSS of the specified square that was randomly chosen.
+		$(".square" + squareNr + "-mark-X").css("display", "inline-block");
+		turn++;
+		return game;
+	}  //If the position on the game-board is equal to zero, it means that neither human nor computer
+		//has used the square, and is therefore open for use.
+	else if (game[randomMove1][randomMove2] === 0 && total === 10){
 		game[randomMove1][randomMove2] = 10;
 		
 		//It assings squareNr the square-number of the random move. It does this by checking the map, that is found in the beginning of the program.
@@ -214,14 +225,12 @@ function blockWinningMove(){
 				  //It changes the CSS of the specified square that was randomly chosen.
 				  $(".square" + squareNr + "-mark-X").css("display", "inline-block");					
 		        return game[0][0] = 10
-
 		        break;
  			   case 1:
 		        var squareNr = mapOfBoard[0][1];
 				  //It changes the CSS of the specified square that was randomly chosen.
 				  $(".square" + squareNr + "-mark-X").css("display", "inline-block");		         			   
 		        return game[0][1] = 10
-
 		        break;
 		      case 2:
 		        var squareNr = mapOfBoard[0][2];
@@ -641,12 +650,10 @@ function testIfWin(){
  	if (row1 === -30 || row2 === -30 || row3 === -30 || column1 === -30 || column2 === -30 || column3 === -30 || diag1 === -30 || diag2 === -30 ){
  		
  		score.human++
- 		game = 
- [[0,0,0]
- ,[0,0,0]
- ,[0,0,0]];
- 		
- 		$(".winner").text("Wow human just won " + score.human++);
+ 		game = [[0,0,0], [0,0,0], [0,0,0]];
+ 		turn = 0;
+ 		alert("Human won");
+ 		$("#human_score").text("Human won: " + score.human);
  		for (var i = 0; i < mapOfBoardReverse.length; i++) {
  			$(".square" + i + "-mark-X").css("display", "none");		        		      
  			$(".square" + i + "-mark-O").css("display", "none");		        		      
@@ -656,17 +663,27 @@ function testIfWin(){
  	} else if (row1 === 30 || row2 === 30 || row3 === 30 || column1 === 30 || column2 === 30 || column3 === 30 || diag1 === 30 || diag2 === 30 ){
 		
 		score.computer++
-		game = 
- [[0,0,0]
- ,[0,0,0]
- ,[0,0,0]];
+		game = [[0,0,0] ,[0,0,0], [0,0,0]];
+		turn = 0;
+		alert("Computer won");
   		for (var i = 0; i < mapOfBoardReverse.length; i++) {
  			$(".square" + i + "-mark-X").css("display", "none");		        		      
  			$(".square" + i + "-mark-O").css("display", "none");		        		      
  		};
-		$(".winner").text("Wow the computer just won " + score.computer);	
+		$("#computer_score").text("Computer won: " + score.computer);	
 		return;
-	} 
+	} else if ( game[0][0] !== 0 && game[0][1] !== 0 && game[0][2] !== 0 && game[1][0] !== 0 && game[1][1] !== 0 && game[1][2] !== 0 && game[2][0] !== 0 && game[2][1] !== 0 && game[2][2] !== 0 ){
+		score.draw++
+		game = [[0,0,0] ,[0,0,0], [0,0,0]];
+		turn = 0;
+		alert("Draw");
+  		for (var i = 0; i < mapOfBoardReverse.length; i++) {
+ 			$(".square" + i + "-mark-X").css("display", "none");		        		      
+ 			$(".square" + i + "-mark-O").css("display", "none");		        		      
+ 		};
+		$("#draw_score").text("Draw: " + score.draw);	
+		return;
+	}
 }
 
 
